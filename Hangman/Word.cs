@@ -26,6 +26,11 @@ namespace Hangman
         {
             WordLength = ChosenWord.Length;
         }
+
+        public int GetWordLength()
+        {
+            return WordLength;
+        }
         #endregion
 
     }

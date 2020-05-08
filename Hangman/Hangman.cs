@@ -9,7 +9,10 @@ namespace Hangman
     class Hangman
     {
         private int Attempts { get; set; }
+        private bool Alive = true;
 
+
+        #region Methods
         public void SetAttempts(string difficulty)
         {
             switch (difficulty)
@@ -25,5 +28,16 @@ namespace Hangman
                     break;
             }
         }
+
+        public void UpdateAttempts()
+        {
+            Attempts--;
+        }
+
+        public bool CheckManStatus()
+        {
+            return Alive;
+        }
+        #endregion
     }
 }

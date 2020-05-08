@@ -13,15 +13,29 @@ namespace Hangman
             Word word = new Word();
             Hangman hangMan = new Hangman();
 
+            //Get Word Before Game Starts
             Console.WriteLine("Enter Word");
-            //Console.ReadKey();
             word.SetWord(Console.ReadLine());
             word.SetWordLength();
-
+            //Set Difficulty
             Console.WriteLine("Choose Difficulty: Easy(E) OR Medium(M) OR Hard(H)");
             hangMan.SetAttempts(Console.ReadLine());
 
-            Console.WriteLine(word.GetWord());
+
+            //Start Game
+            Game theGame = new Game();
+            //GameStatus and CheckManStatus must be true
+            while (theGame.GetGameStatus() && hangMan.CheckManStatus())
+            {
+                for(int i = 0; i < word.GetWordLength(); i++)
+                {
+                    Console.Write("_ ");
+                }
+                Console.WriteLine();
+                Console.Write("Enter a letter: ");
+                Console.ReadLine();
+            }
+
             Console.ReadKey();
         }
     }

@@ -8,7 +8,13 @@ namespace Hangman
 {
     class Game
     {
-        private bool StartGame = true;
-        private bool EndGame = false;
+        private bool gameRun = true;
+
+        #region Methods
+        public bool GetGameStatus()
+        {
+            return gameRun;
+        }
+        #endregion
     }
 }
