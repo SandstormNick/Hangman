@@ -10,14 +10,14 @@ namespace Hangman
     {
         private int Attempts { get; set; }
 
-        public void SetAttempts(char difficulty)
+        public void SetAttempts(string difficulty)
         {
             switch (difficulty)
             {
-                case 'H':
+                case "H":
                     Attempts = 5;
                     break;
-                case 'M':
+                case "M":
                     Attempts = 6;
                     break;
                 default:
