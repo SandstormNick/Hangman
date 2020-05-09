@@ -27,13 +27,11 @@ namespace Hangman
             //GameStatus and CheckManStatus must be true
             while (theGame.GetGameStatus() && hangMan.CheckManStatus())
             {
-                for(int i = 0; i < word.GetWordLength(); i++)
-                {
-                    Console.Write("_ ");
-                }
-                Console.WriteLine();
-                Console.Write("Enter a letter: ");
-                Console.ReadLine();
+                Console.WriteLine(theGame.PrintWord(word.GetWordLength()));
+                Console.WriteLine(theGame.EnterGuess());
+                theGame.GetUserGuess(Console.ReadLine());
+
+                theGame.ClearConsoleWindow();
             }
 
             Console.ReadKey();
