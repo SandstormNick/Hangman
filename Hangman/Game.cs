@@ -17,12 +17,19 @@ namespace Hangman
             return GameRun;
         }
 
-        public string PrintWord(int wordLength)
+        public string PrintWord(int wordLength, char[] wordArray, int[] wordState)
         {
             string wordPlaceholder = "";
             for (int i = 0; i < wordLength; i++)
             {
-                wordPlaceholder += "_ ";
+                if (wordState[i] == 1)
+                {
+                    wordPlaceholder += wordArray[i].ToString() + " ";
+                }
+                else
+                {
+                    wordPlaceholder += "_ ";
+                }
             }
             return wordPlaceholder;
         }

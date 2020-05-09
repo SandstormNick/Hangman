@@ -39,6 +39,11 @@ namespace Hangman
             WordArray = word.ToCharArray();
         }
 
+        public char[] GetWordArray()
+        {
+            return WordArray;
+        }
+
         public void CreateStateArray()
         {
             WordState = new int[WordArray.Length];
@@ -46,6 +51,11 @@ namespace Hangman
             {
                 WordState[i] = 0;
             }
+        }
+
+        public int[] GetWordState()
+        {
+            return WordState;
         }
 
         public char GetCharFromArray(int charPosition)

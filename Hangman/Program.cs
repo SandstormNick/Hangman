@@ -12,7 +12,7 @@ namespace Hangman
         {
             Word word = new Word();
             Hangman hangMan = new Hangman();
-
+            Console.WriteLine(hangMan.GetHangman());
             //Get Word Before Game Starts
             Console.WriteLine("Enter Word");
             word.SetWord(Console.ReadLine());
@@ -32,11 +32,11 @@ namespace Hangman
             //GameStatus and CheckManStatus must be true
             while (theGame.GetGameStatus() && hangMan.CheckManStatus())
             {
-                Console.WriteLine(theGame.PrintWord(word.GetWordLength()));
+                Console.WriteLine(theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState()));
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
                 word.CheckGuessAgainstWord(theGame.GetUserGuess());
-                //theGame.ClearConsoleWindow();
+                theGame.ClearConsoleWindow();
             }
 
             Console.ReadKey();

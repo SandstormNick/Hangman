@@ -11,6 +11,14 @@ namespace Hangman
         private int Attempts { get; set; }
         private bool Alive = true;
 
+        private string FullHangman = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |      / \\\n          |\n__________|__________\n";
+        private string HangmanNoLegs = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |\n          |\n__________|__________\n";
+        private string HangmanNoArms = "           _______\n          |       |\n          |       |\n          |       O\n          |       |\n          |       |\n          |\n          |\n__________|__________\n";
+        private string HangmanOnlyHead = "           _______\n          |       |\n          |       |\n          |       O\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private string HangmanRope = "           _______\n          |       |\n          |       |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private string HangmanBeam = "           _______\n          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private string HangmanPost = "          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private string HangmanBase = "____________________\n";
 
         #region Methods
         public void SetAttempts(string difficulty)
@@ -38,6 +46,12 @@ namespace Hangman
         {
             return Alive;
         }
+
+        public string GetHangman()
+        {
+            return HangmanBase;
+        }
+
         #endregion
     }
 }
