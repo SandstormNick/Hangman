@@ -9,7 +9,7 @@ namespace Hangman
     class Game
     {
         private bool GameRun = true;
-        private string UserGuess { get; set; }
+        private char UserGuess { get; set; }
 
         #region Methods
         public bool GetGameStatus()
@@ -32,9 +32,15 @@ namespace Hangman
             return ("Enter a letter: ");
         }
 
-        public void GetUserGuess(string theGuess)
+        public void SetUserGuess(string theGuess)
         {
-            UserGuess = theGuess.Substring(0, 1);
+            char[] userString = theGuess.ToCharArray();
+            UserGuess = userString[0];
+        }
+
+        public char GetUserGuess()
+        {
+            return UserGuess;
         }
 
         public void ClearConsoleWindow()
