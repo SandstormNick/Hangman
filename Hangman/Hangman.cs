@@ -10,15 +10,16 @@ namespace Hangman
     {
         private int Attempts { get; set; }
         private bool Alive = true;
+        private string HangmanFigure { get; set; }
 
-        private string FullHangman = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |      / \\\n          |\n__________|__________\n";
-        private string HangmanNoLegs = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |\n          |\n__________|__________\n";
-        private string HangmanNoArms = "           _______\n          |       |\n          |       |\n          |       O\n          |       |\n          |       |\n          |\n          |\n__________|__________\n";
-        private string HangmanOnlyHead = "           _______\n          |       |\n          |       |\n          |       O\n          |\n          |\n          |\n          |\n__________|__________\n";
-        private string HangmanRope = "           _______\n          |       |\n          |       |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
-        private string HangmanBeam = "           _______\n          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
-        private string HangmanPost = "          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
-        private string HangmanBase = "____________________\n";
+        private const string FullHangman = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |      / \\\n          |\n__________|__________\n";
+        private const string HangmanNoLegs = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |\n          |\n__________|__________\n";
+        private const string HangmanNoArms = "           _______\n          |       |\n          |       |\n          |       O\n          |       |\n          |       |\n          |\n          |\n__________|__________\n";
+        private const string HangmanOnlyHead = "           _______\n          |       |\n          |       |\n          |       O\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private const string HangmanRope = "           _______\n          |       |\n          |       |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private const string HangmanBeam = "           _______\n          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private const string HangmanPost = "          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
+        private const string HangmanBase = "____________________\n";
 
         #region Methods
         public void SetAttempts(string difficulty)
@@ -49,7 +50,49 @@ namespace Hangman
 
         public string GetHangman()
         {
-            return HangmanBase;
+            return HangmanFigure;
+        }
+
+        public void SetHangman(int wrongAnswer, char difficulty)
+        {
+            if (difficulty == 'E')
+            {
+                switch (wrongAnswer)
+                {
+                    case 1:
+                        HangmanFigure = HangmanBase;
+                        break;
+                    case 2:
+                        HangmanFigure = HangmanPost;
+                        break;
+                    case 3:
+                        HangmanFigure = HangmanBeam;
+                        break;
+                    case 4:
+                        HangmanFigure = HangmanRope;
+                        break;
+                    case 5:
+                        HangmanFigure = HangmanOnlyHead;
+                        break;
+                    case 6:
+                        HangmanFigure = HangmanNoArms;
+                        break;
+                    case 7:
+                        HangmanFigure = HangmanNoLegs;
+                        break;
+                    case 8:
+                        HangmanFigure = FullHangman;
+                        break;
+                }
+            }
+            else if (difficulty == 'M')
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
         #endregion
