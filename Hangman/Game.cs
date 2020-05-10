@@ -17,6 +17,11 @@ namespace Hangman
             return GameRun;
         }
 
+        public void ChangeGameStatus()
+        {
+            GameRun = false;
+        }
+
         public string PrintWord(int wordLength, char[] wordArray, int[] wordState)
         {
             string wordPlaceholder = "";

@@ -12,9 +12,26 @@ namespace Hangman
         private int WordLength { get; set; }
         private char[] WordArray { get; set; }
         private int[] WordState { get; set; }
-        private int WrongAnswer = 0;
+        private int WrongAnswer { get; set; }
+        private bool WordCompleted { get; set; }
+
+        public Word()
+        {
+            WordCompleted = false;
+            WrongAnswer = 0;
+        }
 
         #region Methods
+        public void PromptWord()
+        {
+            Console.WriteLine("Enter Word");
+        }
+
+        public void PromptDifficulty()
+        {
+            Console.WriteLine("Choose Difficulty: Easy(E) OR Medium(M) OR Hard(H)");
+        }
+
         public void SetWord(string userWord)
         {
             ChosenWord = userWord;
@@ -78,11 +95,11 @@ namespace Hangman
 
             if (correctGuess == false)
             {
-                SetWrongAnswerCount();
+                UpdateWrongAnswerCount();
             }
         }
 
-        public void SetWrongAnswerCount()
+        public void UpdateWrongAnswerCount()
         {
             WrongAnswer++;
         }
@@ -90,6 +107,29 @@ namespace Hangman
         public int GetWrongAnswerCount()
         {
             return WrongAnswer;
+        }
+
+        public void SetWordCompleted()
+        {
+            bool wordIsComplete = true;
+            for (int i = 0; i < WordState.Length; i++)
+            {
+                if (WordState[i] == 0)
+                {
+                    wordIsComplete = false;
+                    break;
+                }
+            }
+
+            if (wordIsComplete)
+            {
+                WordCompleted = true;
+            }
+        }
+
+        public bool GetWordCompleted()
+        {
+            return WordCompleted;
         }
         #endregion
 

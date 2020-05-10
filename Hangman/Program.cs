@@ -14,7 +14,7 @@ namespace Hangman
             Hangman hangMan = new Hangman();
 
             //Get Word Before Game Starts
-            Console.WriteLine("Enter Word");
+            word.PromptWord();
             word.SetWord(Console.ReadLine());
             word.SetWordLength();
             word.CreateWordArray(word.GetWord());
@@ -22,26 +22,30 @@ namespace Hangman
             //TO DO: put all this setup into a constructor
 
             //Set Difficulty
-            Console.WriteLine("Choose Difficulty: Easy(E) OR Medium(M) OR Hard(H)");
+            word.PromptDifficulty();
             hangMan.SetAttempts(Console.ReadLine());
             hangMan.SetHangman(word.GetWrongAnswerCount());
             hangMan.SetHangmanArea();
 
-
             //Start Game
             Game theGame = new Game();
-            theGame.ClearConsoleWindow();
+            
             //GameStatus and CheckManStatus must be true
             while (theGame.GetGameStatus() && hangMan.CheckManStatus())
             {
+                theGame.ClearConsoleWindow();
                 Console.WriteLine(hangMan.GetHangmanArea());
                 Console.WriteLine(theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState()));
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
                 word.CheckGuessAgainstWord(theGame.GetUserGuess());
+                word.SetWordCompleted();
                 hangMan.SetHangman(word.GetWrongAnswerCount());
                 hangMan.SetHangmanArea();
-                theGame.ClearConsoleWindow();
+                if (word.GetWordCompleted())
+                {
+                    theGame.ChangeGameStatus();
+                }
             }
 
             Console.ReadKey();

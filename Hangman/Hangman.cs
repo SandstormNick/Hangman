@@ -83,6 +83,7 @@ namespace Hangman
                         break;
                     case 8:
                         HangmanFigure = FullHangman;
+                        Alive = false;
                         break;
                     default:
                         HangmanFigure = "";
@@ -110,6 +111,7 @@ namespace Hangman
                         break;
                     case 6:
                         HangmanFigure = FullHangman;
+                        Alive = false;
                         break;
                     default:
                         HangmanFigure = "";
@@ -134,6 +136,7 @@ namespace Hangman
                         break;
                     case 5:
                         HangmanFigure = FullHangman;
+                        Alive = false;
                         break;
                     default:
                         HangmanFigure = "";
