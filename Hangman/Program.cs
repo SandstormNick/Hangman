@@ -52,3 +52,10 @@ namespace Hangman
         }
     }
 }
+
+//TO DO:
+//Kepp track of the letters entered
+//If they enter the same letter twice, don't count it
+//Uppercase all entries
+//Notification at end of game
+//Option to restart another game
