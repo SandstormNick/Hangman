@@ -12,6 +12,7 @@ namespace Hangman
         private int WordLength { get; set; }
         private char[] WordArray { get; set; }
         private int[] WordState { get; set; }
+        private int WrongAnswer = 0;
 
         #region Methods
         public void SetWord(string userWord)
@@ -65,15 +66,30 @@ namespace Hangman
 
         public void CheckGuessAgainstWord(char userGuess)
         {
+            bool correctGuess = false;
             for(int i = 0; i < WordLength; i++)
             {
                 if (WordArray[i] == userGuess)
                 {
                     WordState[i] = 1;
+                    correctGuess = true;
                 }
-                Console.Write(WordState[i]);
             }
 
+            if (correctGuess == false)
+            {
+                SetWrongAnswerCount();
+            }
+        }
+
+        public void SetWrongAnswerCount()
+        {
+            WrongAnswer++;
+        }
+
+        public int GetWrongAnswerCount()
+        {
+            return WrongAnswer;
         }
         #endregion
 

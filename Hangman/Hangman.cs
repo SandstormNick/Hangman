@@ -11,6 +11,7 @@ namespace Hangman
         private int Attempts { get; set; }
         private bool Alive = true;
         private string HangmanFigure { get; set; }
+        private string HangmanArea { get; set; }
 
         private const string FullHangman = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |      / \\\n          |\n__________|__________\n";
         private const string HangmanNoLegs = "           _______\n          |       |\n          |       |\n          |       O\n          |      /|\\\n          |       |\n          |\n          |\n__________|__________\n";
@@ -53,9 +54,9 @@ namespace Hangman
             return HangmanFigure;
         }
 
-        public void SetHangman(int wrongAnswer, char difficulty)
+        public void SetHangman(int wrongAnswer)
         {
-            if (difficulty == 'E')
+            if (Attempts == 8)
             {
                 switch (wrongAnswer)
                 {
@@ -83,16 +84,74 @@ namespace Hangman
                     case 8:
                         HangmanFigure = FullHangman;
                         break;
+                    default:
+                        HangmanFigure = "";
+                        break;
                 }
             }
-            else if (difficulty == 'M')
+            else if (Attempts == 6)
             {
-                
+                switch (wrongAnswer)
+                {
+                    case 1:
+                        HangmanFigure = HangmanBase;
+                        break;
+                    case 2:
+                        HangmanFigure = HangmanPost;
+                        break;
+                    case 3:
+                        HangmanFigure = HangmanRope;
+                        break;
+                    case 4:
+                        HangmanFigure = HangmanOnlyHead;
+                        break;
+                    case 5:
+                        HangmanFigure = HangmanNoLegs;
+                        break;
+                    case 6:
+                        HangmanFigure = FullHangman;
+                        break;
+                    default:
+                        HangmanFigure = "";
+                        break;
+                }
             }
             else
             {
-
+                switch (wrongAnswer)
+                {
+                    case 1:
+                        HangmanFigure = HangmanBase;
+                        break;
+                    case 2:
+                        HangmanFigure = HangmanBeam;
+                        break;
+                    case 3:
+                        HangmanFigure = HangmanOnlyHead;
+                        break;
+                    case 4:
+                        HangmanFigure = HangmanNoLegs;
+                        break;
+                    case 5:
+                        HangmanFigure = FullHangman;
+                        break;
+                    default:
+                        HangmanFigure = "";
+                        break;
+                }
             }
+        }
+
+        public void SetHangmanArea()
+        {
+            HangmanArea = "========================\n";
+            HangmanArea += GetHangman();
+            HangmanArea += "========================\n";
+        }
+
+        public string GetHangmanArea()
+        {
+            return HangmanArea;
         }
 
         #endregion
