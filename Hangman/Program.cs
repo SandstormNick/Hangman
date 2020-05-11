@@ -31,21 +31,30 @@ namespace Hangman
             Game theGame = new Game();
             
             //GameStatus and CheckManStatus must be true
-            while (theGame.GetGameStatus() && hangMan.CheckManStatus())
+            while (theGame.GetGameStatus())
             {
                 theGame.ClearConsoleWindow();
+                if (word.GetWordCompleted() || hangMan.CheckManStatus() == false)
+                {
+                    theGame.ChangeGameStatus();
+                }
                 Console.WriteLine(hangMan.GetHangmanArea());
                 Console.WriteLine(theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState()));
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
-                word.CheckGuessAgainstWord(theGame.GetUserGuess());
+                word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
                 word.SetWordCompleted();
                 hangMan.SetHangman(word.GetWrongAnswerCount());
                 hangMan.SetHangmanArea();
-                if (word.GetWordCompleted())
-                {
-                    theGame.ChangeGameStatus();
-                }
+            }
+
+            if (word.GetWordCompleted())
+            {
+                theGame.DisplayVictoryMessage();
+            }
+            else
+            {
+                theGame.DisplayDefeatMessage();
             }
 
             Console.ReadKey();
@@ -56,6 +65,4 @@ namespace Hangman
 //TO DO:
 //Kepp track of the letters entered
 //If they enter the same letter twice, don't count it
-//Uppercase all entries
-//Notification at end of game
 //Option to restart another game

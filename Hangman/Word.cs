@@ -34,7 +34,7 @@ namespace Hangman
 
         public void SetWord(string userWord)
         {
-            ChosenWord = userWord;
+            ChosenWord = userWord.ToUpper();
         }
 
         public string GetWord()
@@ -81,21 +81,24 @@ namespace Hangman
             return WordArray[charPosition];
         }
 
-        public void CheckGuessAgainstWord(char userGuess)
+        public void CheckGuessAgainstWord(char userGuess, bool validGuess)
         {
-            bool correctGuess = false;
-            for(int i = 0; i < WordLength; i++)
+            if (validGuess)
             {
-                if (WordArray[i] == userGuess)
+                bool correctGuess = false;
+                for (int i = 0; i < WordLength; i++)
                 {
-                    WordState[i] = 1;
-                    correctGuess = true;
+                    if (WordArray[i] == userGuess)
+                    {
+                        WordState[i] = 1;
+                        correctGuess = true;
+                    }
                 }
-            }
 
-            if (correctGuess == false)
-            {
-                UpdateWrongAnswerCount();
+                if (correctGuess == false)
+                {
+                    UpdateWrongAnswerCount();
+                }
             }
         }
 

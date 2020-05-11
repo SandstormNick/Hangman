@@ -25,7 +25,7 @@ namespace Hangman
         #region Methods
         public void SetAttempts(string difficulty)
         {
-            switch (difficulty)
+            switch (difficulty.ToUpper())
             {
                 case "H":
                     Attempts = 5;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Hangman
 {
@@ -10,6 +11,8 @@ namespace Hangman
     {
         private bool GameRun = true;
         private char UserGuess { get; set; }
+        private bool ValidGuess { get; set; }
+        Regex regex = new Regex("^[a-zA-Z0-9]*$");
 
         #region Methods
         public bool GetGameStatus()
@@ -46,8 +49,17 @@ namespace Hangman
 
         public void SetUserGuess(string theGuess)
         {
-            char[] userString = theGuess.ToCharArray();
-            UserGuess = userString[0];
+            if (regex.IsMatch(theGuess) && theGuess != "")
+            {
+                char[] userString = theGuess.ToUpper().ToCharArray();
+                UserGuess = userString[0];
+                ValidGuess = true;
+            }
+            else
+            {
+                ValidGuess = false;
+            }
+            
         }
 
         public char GetUserGuess()
@@ -58,6 +70,21 @@ namespace Hangman
         public void ClearConsoleWindow()
         {
             Console.Clear();
+        }
+
+        public bool GetValidGuessState()
+        {
+            return ValidGuess;
+        }
+
+        public void DisplayVictoryMessage()
+        {
+            Console.WriteLine("Well Done! You figured out the word!");
+        }
+
+        public void DisplayDefeatMessage()
+        {
+            Console.WriteLine("The man has been hung! Unlucky!");
         }
         #endregion
     }
