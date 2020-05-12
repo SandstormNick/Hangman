@@ -19,9 +19,11 @@ namespace Hangman
         private string CorrectGuesses { get; set; }
         private string IncorrectGuesses { get; set; }
         private string GuessStrings { get; set; }
+        private int WrongAnswer { get; set; }
 
         public Game()
         {
+            WrongAnswer = 0;
             AlphaGuess = new int[alphabet.Length];
             for (int i = 0; i < AlphaGuess.Length; i++)
             {
@@ -71,7 +73,6 @@ namespace Hangman
                 char[] userString = theGuess.ToUpper().ToCharArray();
                 UserGuess = userString[0];
                 ValidGuess = true;
-                SetAlphaGuess();
             }
             else
             {
@@ -105,7 +106,7 @@ namespace Hangman
             Console.WriteLine("The man has been hung! Unlucky!");
         }
 
-        public void SetAlphaGuess()
+        public void SetAlphaGuess(bool correctGuess)
         {
             if (ValidGuess)
             {
@@ -113,6 +114,10 @@ namespace Hangman
                 {
                     if (alphabet[i] == UserGuess)
                     {
+                        if (AlphaGuess[i] == 0 && !correctGuess)
+                        {
+                            UpdateWrongAnswerCount();
+                        }
                         AlphaGuess[i] = 1;
                     }
                 }
@@ -143,6 +148,16 @@ namespace Hangman
         {
             SetGuessStrings();
             return GuessStrings;
+        }
+
+        public void UpdateWrongAnswerCount()
+        {
+            WrongAnswer++;
+        }
+
+        public int GetWrongAnswerCount()
+        {
+            return WrongAnswer;
         }
         #endregion
     }

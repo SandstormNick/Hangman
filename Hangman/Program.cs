@@ -24,7 +24,7 @@ namespace Hangman
             //Set Difficulty
             word.PromptDifficulty();
             hangMan.SetAttempts(Console.ReadLine());
-            hangMan.SetHangman(word.GetWrongAnswerCount());
+            hangMan.SetHangman(0);
             hangMan.SetHangmanArea();
 
             //Start Game
@@ -44,9 +44,10 @@ namespace Hangman
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
                 word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
+                theGame.SetAlphaGuess(word.GetCorrectGuessState());
                 theGame.SetGuessStrings(word.GetCorrectGuessState());
                 word.SetWordCompleted();
-                hangMan.SetHangman(word.GetWrongAnswerCount());
+                hangMan.SetHangman(theGame.GetWrongAnswerCount());
                 hangMan.SetHangmanArea();
             }
 
@@ -65,5 +66,8 @@ namespace Hangman
 }
 
 //TO DO:
-//If they enter the same letter twice, don't count it
-//Option to restart another game
+//1) If they enter the same letter twice, don't add it to the GuessStrings
+//2) Option to restart another game
+//3) Clean up Display
+//4) Some code refactoring -- make it neater
+// Finish these 4 and then start another little proj

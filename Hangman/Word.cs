@@ -12,14 +12,12 @@ namespace Hangman
         private int WordLength { get; set; }
         private char[] WordArray { get; set; }
         private int[] WordState { get; set; }
-        private int WrongAnswer { get; set; }
         private bool WordCompleted { get; set; }
         private bool CorrectGuess { get; set; }
 
         public Word()
         {
             WordCompleted = false;
-            WrongAnswer = 0;
         }
 
         #region Methods
@@ -95,22 +93,7 @@ namespace Hangman
                         CorrectGuess = true;
                     }
                 }
-
-                if (CorrectGuess == false)
-                {
-                    UpdateWrongAnswerCount();
-                }
             }
-        }
-
-        public void UpdateWrongAnswerCount()
-        {
-            WrongAnswer++;
-        }
-
-        public int GetWrongAnswerCount()
-        {
-            return WrongAnswer;
         }
 
         public void SetWordCompleted()
