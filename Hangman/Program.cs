@@ -40,9 +40,11 @@ namespace Hangman
                 }
                 Console.WriteLine(hangMan.GetHangmanArea());
                 Console.WriteLine(theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState()));
+                Console.WriteLine(theGame.DisplayGuessStrings());
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
                 word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
+                theGame.SetGuessStrings(word.GetCorrectGuessState());
                 word.SetWordCompleted();
                 hangMan.SetHangman(word.GetWrongAnswerCount());
                 hangMan.SetHangmanArea();
@@ -63,6 +65,5 @@ namespace Hangman
 }
 
 //TO DO:
-//Kepp track of the letters entered
 //If they enter the same letter twice, don't count it
 //Option to restart another game

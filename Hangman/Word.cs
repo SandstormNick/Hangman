@@ -14,6 +14,7 @@ namespace Hangman
         private int[] WordState { get; set; }
         private int WrongAnswer { get; set; }
         private bool WordCompleted { get; set; }
+        private bool CorrectGuess { get; set; }
 
         public Word()
         {
@@ -85,17 +86,17 @@ namespace Hangman
         {
             if (validGuess)
             {
-                bool correctGuess = false;
+                CorrectGuess = false;
                 for (int i = 0; i < WordLength; i++)
                 {
                     if (WordArray[i] == userGuess)
                     {
                         WordState[i] = 1;
-                        correctGuess = true;
+                        CorrectGuess = true;
                     }
                 }
 
-                if (correctGuess == false)
+                if (CorrectGuess == false)
                 {
                     UpdateWrongAnswerCount();
                 }
@@ -133,6 +134,11 @@ namespace Hangman
         public bool GetWordCompleted()
         {
             return WordCompleted;
+        }
+
+        public bool GetCorrectGuessState()
+        {
+            return CorrectGuess;
         }
         #endregion
 
