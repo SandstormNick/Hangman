@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Dynamic;
+using System.ComponentModel;
 
 namespace Hangman
 {
     class Game
     {
-        private bool GameRun = true;
+        private bool  PlayGame { get; set; }
+        private bool GameRun { get; set; }
         private char UserGuess { get; set; }
         private bool ValidGuess { get; set; }
         Regex regex = new Regex("^[a-zA-Z]*$");
@@ -23,6 +25,8 @@ namespace Hangman
 
         public Game()
         {
+            PlayGame = true;
+            GameRun = true;
             WrongAnswer = 0;
             AlphaGuess = new int[alphabet.Length];
             for (int i = 0; i < AlphaGuess.Length; i++)
@@ -34,6 +38,23 @@ namespace Hangman
         }
 
         #region Methods
+        public bool GetPlayGameStatus()
+        {
+            return PlayGame;
+        }
+
+        public void PromptUserToPlayAgain()
+        {
+            Console.WriteLine("If you want to play again hit P button or hit any other button to exit.");
+        }
+
+        public void SetPlayGameStatus(char userChoice)
+        {
+            if (userChoice != 'P')
+            {
+                PlayGame = false;
+            }
+        }
         public bool GetGameStatus()
         {
             return GameRun;
@@ -42,6 +63,11 @@ namespace Hangman
         public void ChangeGameStatus()
         {
             GameRun = false;
+        }
+
+        public void RestartGameStatus()
+        {
+            GameRun = true;
         }
 
         public string PrintWord(int wordLength, char[] wordArray, int[] wordState)

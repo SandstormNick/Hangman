@@ -9,7 +9,7 @@ namespace Hangman
     class Hangman
     {
         private int Attempts { get; set; }
-        private bool Alive = true;
+        private bool Alive { get; set; }
         private string HangmanFigure { get; set; }
         private string HangmanArea { get; set; }
 
@@ -22,6 +22,10 @@ namespace Hangman
         private const string HangmanPost = "          |\n          |\n          |\n          |\n          |\n          |\n          |\n__________|__________\n";
         private const string HangmanBase = "____________________\n";
 
+        public Hangman()
+        {
+            Alive = true;
+        }
         #region Methods
         public void SetAttempts(string difficulty)
         {
