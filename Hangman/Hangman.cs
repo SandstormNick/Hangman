@@ -43,6 +43,11 @@ namespace Hangman
             }
         }
 
+        public int GetAttempts()
+        {
+            return Attempts;
+        }
+
         public void UpdateAttempts()
         {
             Attempts--;

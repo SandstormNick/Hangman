@@ -70,7 +70,7 @@ namespace Hangman
             GameRun = true;
         }
 
-        public string PrintWord(int wordLength, char[] wordArray, int[] wordState)
+        public void PrintWord(int wordLength, char[] wordArray, int[] wordState)
         {
             string wordPlaceholder = "";
             for (int i = 0; i < wordLength; i++)
@@ -84,12 +84,12 @@ namespace Hangman
                     wordPlaceholder += "_ ";
                 }
             }
-            return wordPlaceholder;
+            Console.WriteLine(wordPlaceholder + "\n\n========================"); 
         }
 
-        public string EnterGuess()
+        public void EnterGuess()
         {
-            return ("Enter a letter: ");
+            Console.WriteLine("========================\nEnter a letter: ");
         }
 
         public void SetUserGuess(string theGuess)
@@ -200,6 +200,12 @@ namespace Hangman
         public int GetWrongAnswerCount()
         {
             return WrongAnswer;
+        }
+
+        public void DisplayRemainingTurns(int turnsLeft)
+        {
+            turnsLeft = turnsLeft - WrongAnswer;
+            Console.WriteLine("Turns left: " + turnsLeft.ToString());
         }
         #endregion
     }

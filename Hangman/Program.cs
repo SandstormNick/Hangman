@@ -42,10 +42,11 @@ namespace Hangman
                     {
                         theGame.ChangeGameStatus();
                     }
+                    theGame.DisplayRemainingTurns(hangMan.GetAttempts());
                     Console.WriteLine(hangMan.GetHangmanArea());
-                    Console.WriteLine(theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState()));
+                    theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState());
                     Console.WriteLine(theGame.DisplayGuessStrings());
-                    Console.WriteLine(theGame.EnterGuess());
+                    theGame.EnterGuess();
                     theGame.SetUserGuess(Console.ReadLine());
                     word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
                     theGame.SetGuessStrings(word.GetCorrectGuessState());
@@ -74,6 +75,7 @@ namespace Hangman
 }
 
 //TO DO:
-//3) Clean up Display
+//2) Clean up Display
+//Option to exit game in middle of run
 //4) Some code refactoring -- make it neater --make get rid of all the cw's
 // Finish these 4 and then start another little proj
