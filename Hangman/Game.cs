@@ -126,15 +126,31 @@ namespace Hangman
 
         public void SetGuessStrings(bool correctGuess)
         {
+            bool addToString = false;
             if (ValidGuess)
             {
-                if (correctGuess)
+                for (int i = 0; i < alphabet.Length; i++)
                 {
-                    CorrectGuesses += UserGuess.ToString() + "  ";
+                    if (alphabet[i] == UserGuess)
+                    {
+                        if (AlphaGuess[i] == 0)
+                        {
+                            addToString = true;
+                            break;
+                        }
+                    }
                 }
-                else
+
+                if (addToString)
                 {
-                    IncorrectGuesses += UserGuess.ToString() + "  ";
+                    if (correctGuess)
+                    {
+                        CorrectGuesses += UserGuess.ToString() + "  ";
+                    }
+                    else
+                    {
+                        IncorrectGuesses += UserGuess.ToString() + "  ";
+                    }
                 }
             }
         }

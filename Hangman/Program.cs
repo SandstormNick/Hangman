@@ -44,8 +44,8 @@ namespace Hangman
                 Console.WriteLine(theGame.EnterGuess());
                 theGame.SetUserGuess(Console.ReadLine());
                 word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
-                theGame.SetAlphaGuess(word.GetCorrectGuessState());
                 theGame.SetGuessStrings(word.GetCorrectGuessState());
+                theGame.SetAlphaGuess(word.GetCorrectGuessState());
                 word.SetWordCompleted();
                 hangMan.SetHangman(theGame.GetWrongAnswerCount());
                 hangMan.SetHangmanArea();
@@ -66,8 +66,7 @@ namespace Hangman
 }
 
 //TO DO:
-//1) If they enter the same letter twice, don't add it to the GuessStrings
 //2) Option to restart another game
 //3) Clean up Display
-//4) Some code refactoring -- make it neater
+//4) Some code refactoring -- make it neater --make get rid of all the cw's
 // Finish these 4 and then start another little proj
