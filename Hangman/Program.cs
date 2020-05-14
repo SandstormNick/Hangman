@@ -47,7 +47,7 @@ namespace Hangman
                     theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState());
                     Console.WriteLine(theGame.DisplayGuessStrings());
                     theGame.EnterGuess();
-                    theGame.SetUserGuess(Console.ReadLine());
+                    theGame.SetUserGuess(Console.ReadKey());
                     word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
                     theGame.SetGuessStrings(word.GetCorrectGuessState());
                     theGame.SetAlphaGuess(word.GetCorrectGuessState());
@@ -75,7 +75,6 @@ namespace Hangman
 }
 
 //TO DO:
-//2) Clean up Display
-//Option to exit game in middle of run
+//2) Clean up Display -- mention escape to exis in pregame set up
 //4) Some code refactoring -- make it neater --make get rid of all the cw's
 // Finish these 4 and then start another little proj

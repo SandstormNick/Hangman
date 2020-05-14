@@ -50,7 +50,7 @@ namespace Hangman
 
         public void SetPlayGameStatus(char userChoice)
         {
-            if (userChoice != 'P')
+            if (userChoice != 'p' && userChoice != 'P')
             {
                 PlayGame = false;
             }
@@ -92,8 +92,9 @@ namespace Hangman
             Console.WriteLine("========================\nEnter a letter: ");
         }
 
-        public void SetUserGuess(string theGuess)
+        public void SetUserGuess(ConsoleKeyInfo keyPressed)
         {
+            String theGuess = keyPressed.KeyChar.ToString();
             if (regex.IsMatch(theGuess) && theGuess != "")
             {
                 char[] userString = theGuess.ToUpper().ToCharArray();
@@ -104,7 +105,11 @@ namespace Hangman
             {
                 ValidGuess = false;
             }
-            
+
+            if (keyPressed.Key == ConsoleKey.Escape)
+            {
+                ChangeGameStatus();
+            }
         }
 
         public char GetUserGuess()
