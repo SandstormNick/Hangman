@@ -35,6 +35,8 @@ namespace Hangman
                 hangMan.SetHangman(0);
                 hangMan.SetHangmanArea();
 
+                theGame.DisplayExitInfo();
+                Console.ReadLine();
                 while (theGame.GetGameStatus())
                 {
                     theGame.ClearConsoleWindow();
@@ -75,6 +77,6 @@ namespace Hangman
 }
 
 //TO DO:
-//2) Clean up Display -- mention escape to exis in pregame set up
+//2) Clean up Display
 //4) Some code refactoring -- make it neater --make get rid of all the cw's
 // Finish these 4 and then start another little proj

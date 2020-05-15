@@ -212,6 +212,11 @@ namespace Hangman
             turnsLeft = turnsLeft - WrongAnswer;
             Console.WriteLine("Turns left: " + turnsLeft.ToString());
         }
+
+        public void DisplayExitInfo()
+        {
+            Console.WriteLine("To exit the game hit the Esc key.\nHit Enter to Start game :)");
+        }
         #endregion
     }
 }
