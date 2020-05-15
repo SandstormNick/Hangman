@@ -13,8 +13,6 @@ namespace Hangman
             //Start Game
             Game theGame = new Game();
             
-
-            //GameStatus and CheckManStatus must be true
             while (theGame.GetPlayGameStatus())
             {
                 theGame = new Game();
@@ -35,6 +33,7 @@ namespace Hangman
                 hangMan.SetHangman(0);
                 hangMan.SetHangmanArea();
 
+                theGame.ClearConsoleWindow();
                 theGame.DisplayExitInfo();
                 Console.ReadLine();
                 while (theGame.GetGameStatus())
@@ -44,20 +43,24 @@ namespace Hangman
                     {
                         theGame.ChangeGameStatus();
                     }
-                    theGame.DisplayRemainingTurns(hangMan.GetAttempts());
-                    Console.WriteLine(hangMan.GetHangmanArea());
-                    theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState());
-                    Console.WriteLine(theGame.DisplayGuessStrings());
-                    theGame.EnterGuess();
-                    theGame.SetUserGuess(Console.ReadKey());
-                    word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
-                    theGame.SetGuessStrings(word.GetCorrectGuessState());
-                    theGame.SetAlphaGuess(word.GetCorrectGuessState());
-                    word.SetWordCompleted();
-                    hangMan.SetHangman(theGame.GetWrongAnswerCount());
-                    hangMan.SetHangmanArea();
+                    else
+                    {
+                        theGame.DisplayRemainingTurns(hangMan.GetAttempts());
+                        hangMan.DisplayHangmanArea();
+                        theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState());
+                        Console.WriteLine(theGame.DisplayGuessStrings());
+                        theGame.EnterGuess();
+                        theGame.SetUserGuess(Console.ReadKey());
+                        word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
+                        theGame.SetGuessStrings(word.GetCorrectGuessState());
+                        theGame.SetAlphaGuess(word.GetCorrectGuessState());
+                        word.SetWordCompleted();
+                        hangMan.SetHangman(theGame.GetWrongAnswerCount());
+                        hangMan.SetHangmanArea();
+                    }
                 }
 
+                hangMan.DisplayHangmanArea();
                 if (word.GetWordCompleted())
                 {
                     theGame.DisplayVictoryMessage();
@@ -68,8 +71,8 @@ namespace Hangman
                 }
                 theGame.PromptUserToPlayAgain();
                 theGame.SetPlayGameStatus(Console.ReadKey().KeyChar);
+                theGame.ClearConsoleWindow();
             }
-            
 
             //Console.ReadKey();
         }
@@ -77,6 +80,5 @@ namespace Hangman
 }
 
 //TO DO:
-//2) Clean up Display
 //4) Some code refactoring -- make it neater --make get rid of all the cw's
 // Finish these 4 and then start another little proj

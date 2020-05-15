@@ -161,9 +161,9 @@ namespace Hangman
             HangmanArea += "========================\n";
         }
 
-        public string GetHangmanArea()
+        public void DisplayHangmanArea()
         {
-            return HangmanArea;
+            Console.WriteLine(HangmanArea);
         }
 
         #endregion
