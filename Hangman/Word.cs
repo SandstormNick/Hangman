@@ -18,6 +18,11 @@ namespace Hangman
         public Word()
         {
             WordCompleted = false;
+            PromptWord();
+            SetWord(Console.ReadLine());
+            SetWordLength();
+            CreateWordArray(GetWord());
+            CreateStateArray();
         }
 
         #region Methods

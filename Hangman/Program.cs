@@ -17,15 +17,10 @@ namespace Hangman
             {
                 theGame = new Game();
                 theGame.RestartGameStatus();
+
+                //Get Word Before Game Starts
                 Word word = new Word();
                 Hangman hangMan = new Hangman();
-                //Get Word Before Game Starts
-                word.PromptWord();
-                word.SetWord(Console.ReadLine());
-                word.SetWordLength();
-                word.CreateWordArray(word.GetWord());
-                word.CreateStateArray();
-                //TO DO: put all this setup into a constructor
 
                 //Set Difficulty
                 word.PromptDifficulty();
@@ -48,7 +43,7 @@ namespace Hangman
                         theGame.DisplayRemainingTurns(hangMan.GetAttempts());
                         hangMan.DisplayHangmanArea();
                         theGame.PrintWord(word.GetWordLength(), word.GetWordArray(), word.GetWordState());
-                        Console.WriteLine(theGame.DisplayGuessStrings());
+                        theGame.DisplayGuessStrings();
                         theGame.EnterGuess();
                         theGame.SetUserGuess(Console.ReadKey());
                         word.CheckGuessAgainstWord(theGame.GetUserGuess(), theGame.GetValidGuessState());
@@ -73,12 +68,6 @@ namespace Hangman
                 theGame.SetPlayGameStatus(Console.ReadKey().KeyChar);
                 theGame.ClearConsoleWindow();
             }
-
-            //Console.ReadKey();
         }
     }
 }
-
-//TO DO:
-//4) Some code refactoring -- make it neater --make get rid of all the cw's
-// Finish these 4 and then start another little proj

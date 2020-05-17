@@ -191,10 +191,10 @@ namespace Hangman
             GuessStrings = CorrectGuesses + "\n\n" + IncorrectGuesses;
         }
 
-        public string DisplayGuessStrings()
+        public void DisplayGuessStrings()
         {
             SetGuessStrings();
-            return GuessStrings;
+            Console.WriteLine(GuessStrings);
         }
 
         public void UpdateWrongAnswerCount()
